@@ -1,0 +1,42 @@
+export default {
+    calendar: [
+        [
+            { dayNumber: 1, isHoliday: false },
+            { dayNumber: 2, isHoliday: false },
+            { dayNumber: 3, isHoliday: false },
+            { dayNumber: 4, isHoliday: false },
+            { dayNumber: 5, isHoliday: false },
+            { dayNumber: 6, isHoliday: true },
+            { dayNumber: 7, isHoliday: true },
+        ],
+        [
+            { dayNumber: 8, isHoliday: false },
+            { dayNumber: 9, isHoliday: false },
+            { dayNumber: 10, isHoliday: false },
+            { dayNumber: 11, isHoliday: false },
+            { dayNumber: 12, isHoliday: false },
+            { dayNumber: 13, isHoliday: true },
+            { dayNumber: 14, isHoliday: true },
+        ],
+        [
+            { dayNumber: 15, isHoliday: false },
+            { dayNumber: 16, isHoliday: false },
+            { dayNumber: 17, isHoliday: false },
+            { dayNumber: 18, isHoliday: false },
+            { dayNumber: 19, isHoliday: false },
+            { dayNumber: 20, isHoliday: true },
+            { dayNumber: 21, isHoliday: true },
+        ],
+        [
+            { dayNumber: 22, isHoliday: false },
+            { dayNumber: 23, isHoliday: false },
+            { dayNumber: 24, isHoliday: false },
+            { dayNumber: 25, isHoliday: false },
+            { dayNumber: 26, isHoliday: false },
+            { dayNumber: 27, isHoliday: true },
+            { dayNumber: 28, isHoliday: true },
+        ],
+    ],
+    todos: [],
+    news: [],
+};

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const World = () => <h1>World</h1>; // eslint-disable-line react/jsx-filename-extension
+import CalendarView from './views/CalendarView/CalendarView';
 
-ReactDOM.render(<World />, window.document.getElementById('world'));
+ReactDOM.render(<CalendarView />, window.document.getElementById('world')); // eslint-disable-line
