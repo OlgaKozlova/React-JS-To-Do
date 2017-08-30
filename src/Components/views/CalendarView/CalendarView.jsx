@@ -5,20 +5,32 @@ import CalendarViewTexts from './CalendarViewTexts.json';
 import CalendarViewActions from './CalendarViewActions.js';
 import CalendarViewSelector from './CalendarViewSelector.js';
 
+import Row from '../../layoutComponents/Row/Row.jsx';
+import Column from '../../layoutComponents/Column/Column.jsx';
+import View from '../../layoutComponents/View/View.jsx';
+
 import Header from '../../dumbComponents/Header/Header.jsx';
 import Menu from '../../dumbComponents/Menu/Menu.jsx';
 import Calendar from '../../dumbComponents/Calendar/Calendar.jsx';
 
-export default connect(CalendarViewSelector, CalendarViewActions)(props => (<div>
-    <Header
-        title={CalendarViewTexts.TITLE}
-        description={CalendarViewTexts.DESCRIPTION}
-    />
-    <Menu
-        menuItems={props.menuItems}
-    />
+export default connect(CalendarViewSelector, CalendarViewActions)(props => (<View>
+    <Row>
+        <Column>
+            <Header
+                title={CalendarViewTexts.TITLE}
+                description={CalendarViewTexts.DESCRIPTION}
+            />
+        </Column>
+    </Row>
+    <Row>
+        <Column>
+            <Menu
+                menuItems={props.menuItems}
+            />
+        </Column>
+    </Row>
     <Calendar
         title="Today"
         weeks={props.weeks}
     />
-</div>));
+</View>));

@@ -4,22 +4,23 @@ import injectSheet from 'react-jss';
 
 const styles = {
     title: {
-        background: 'red',
+        textAlign: 'center',
     },
     description: {
-        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: '1.5em',
     },
 };
 
 const Header = props => (<header>
-    <div className={props.classes.title}>{props.title}</div>
+    <h1 className={props.classes.title}>{props.title}</h1>
     <div className={props.classes.description}>{props.description}</div>
 </header>);
 
 Header.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    classes: PropTypes.objectOf(PropTypes.string).isRequired,
+    classes: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default injectSheet(styles)(Header);
