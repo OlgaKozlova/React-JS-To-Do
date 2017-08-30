@@ -1,5 +1,5 @@
 export default () => ({
-    calendar: [
+    weeks: [
         [
             { dayNumber: 1, isHoliday: false },
             { dayNumber: 2, isHoliday: false },
@@ -37,6 +37,7 @@ export default () => ({
             { dayNumber: 28, isHoliday: true },
         ],
     ],
+    menuItems: [{ text: 'Calendar', id: 'CALENDAR' }, { text: 'News', id: 'NEWS' }],
     todos: [],
     news: [],
 });
