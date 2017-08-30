@@ -9,7 +9,7 @@ import {
     SAVE_TO_DO_ITEM,
     CANCEL_ADDING_TO_DO_ITEM,
     DELETE_TO_DO_ITEM,
-} from './CalendarViewConstants';
+} from './CalendarViewConstants.js';
 
 export default {
     incrementMonth: () => ({

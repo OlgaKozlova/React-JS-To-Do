@@ -1,4 +1,4 @@
-export default {
+export default () => ({
     calendar: [
         [
             { dayNumber: 1, isHoliday: false },
@@ -39,4 +39,4 @@ export default {
     ],
     todos: [],
     news: [],
-};
+});

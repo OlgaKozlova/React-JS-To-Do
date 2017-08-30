@@ -9,7 +9,7 @@ import {
     CHANGE_TO_DO_ITEM_TITLE,
     CHANGE_TO_DO_ITEM_DATE,
     CANCEL_ADDING_TO_DO_ITEM,
-} from './CalendarViewConstants';
+} from './CalendarViewConstants.js';
 
 const initialState = Immutable.Map({
     activeDate: null,
@@ -19,7 +19,7 @@ const initialState = Immutable.Map({
     toDoItemDate: null,
 });
 
-export default (state = initialState, action) => {
+export const CalendarViewReducer = (state = initialState, action) => {
     const payload = action.payload;
 
     switch (action.type) {
