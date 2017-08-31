@@ -6,7 +6,7 @@ import * as reducers from './reducers';
 import App from './Components/App.jsx';
 
 ReactDOM.render(
-    // eslint-disable-next-line
+    // eslint-disable-next-line react/jsx-filename-extension
     <Provider store={createStore(combineReducers(reducers))}>
         <App />
     </Provider>,

@@ -11,6 +11,7 @@ import View from '../../layoutComponents/View/View.jsx';
 
 import Header from '../../dumbComponents/Header/Header.jsx';
 import Menu from '../../dumbComponents/Menu/Menu.jsx';
+import CalendarContainer from '../../dumbComponents/CalendarContainer/CalendarContainer.jsx';
 import Calendar from '../../dumbComponents/Calendar/Calendar.jsx';
 
 export default connect(CalendarViewSelector, CalendarViewActions)(props => (<View>
@@ -29,8 +30,14 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
             />
         </Column>
     </Row>
-    <Calendar
-        title="Today"
-        weeks={props.weeks}
-    />
+    <Row>
+        <Column>
+            <CalendarContainer>
+                <Calendar
+                    title=""
+                    weeks=""
+                />
+            </CalendarContainer>
+        </Column>
+    </Row>
 </View>));

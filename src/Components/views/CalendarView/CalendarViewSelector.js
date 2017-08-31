@@ -37,7 +37,7 @@ export default () => ({
             { dayNumber: 28, isHoliday: true },
         ],
     ],
-    menuItems: [{ text: 'Calendar', id: 'CALENDAR' }, { text: 'News', id: 'NEWS' }],
+    menuItems: [{ text: 'CalendarContainer', id: 'CALENDAR' }, { text: 'News', id: 'NEWS' }],
     todos: [],
     news: [],
 });
