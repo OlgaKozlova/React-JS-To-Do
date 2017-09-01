@@ -30,7 +30,7 @@ export const CalendarViewReducer = (state = initialState, action) => {
         return state.set('activeDate', moment(state.get('activeDate')).subtract(1, 'month').startOf('month'));
     }
     case SET_ACTIVE_DAY: {
-        return state.set('activeDate', moment(state.get('activeDate')).date(payload.dayNumber));
+        return state.set('activeDate', moment(state.get('activeDate')).date(payload.id));
     }
     case OPEN_ADD_EDIT_TO_DO_ITEM_FORM: {
         return state.set('isAddEditFormShown', true);

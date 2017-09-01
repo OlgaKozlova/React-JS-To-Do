@@ -34,8 +34,9 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
         <Column>
             <CalendarContainer>
                 <Calendar
-                    title=""
-                    weeks=""
+                    title={props.title}
+                    weeks={props.weeks}
+                    dayOfWeeks={props.dayOfWeeks}
                 />
             </CalendarContainer>
         </Column>
