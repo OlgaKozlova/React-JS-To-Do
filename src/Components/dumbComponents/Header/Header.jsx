@@ -20,7 +20,7 @@ const Header = props => (<header>
 Header.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    classes: PropTypes.arrayOf(PropTypes.string),
+    classes: PropTypes.objectOf(PropTypes.string),
 };
 
 export default injectSheet(styles)(Header);

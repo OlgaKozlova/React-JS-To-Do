@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CalendarViewTexts from './CalendarViewTexts.json';
 
 import CalendarViewActions from './CalendarViewActions.js';
 import CalendarViewSelector from './CalendarViewSelector.js';
@@ -18,8 +17,8 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
     <Row>
         <Column>
             <Header
-                title={CalendarViewTexts.TITLE}
-                description={CalendarViewTexts.DESCRIPTION}
+                title={props.title}
+                description={props.description}
             />
         </Column>
     </Row>
@@ -34,7 +33,7 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
         <Column>
             <CalendarContainer>
                 <Calendar
-                    title={props.title}
+                    title={props.calendarTitle}
                     weeks={props.weeks}
                     dayOfWeeks={props.dayOfWeeks}
                 />

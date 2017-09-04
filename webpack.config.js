@@ -29,4 +29,10 @@ module.exports = {
             { from: path.join(__dirname, 'src', 'index.html'), to: path.join(__dirname, 'build', 'index.html') },
         ]),
     ],
+    devServer: {
+        contentBase: path.join(__dirname, 'src'),
+        compress: true,
+        host: '127.0.0.1',
+        port: 9000,
+    },
 };

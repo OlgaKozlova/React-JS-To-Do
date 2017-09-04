@@ -31,7 +31,7 @@ const Menu = props => (<ul className={props.classes.menu}>
 
 Menu.propTypes = {
     menuItems: PropTypes.arrayOf(PropTypes.object).isRequired,
-    classes: PropTypes.arrayOf(PropTypes.string),
+    classes: PropTypes.objectOf(PropTypes.string),
 };
 
 export default injectSheet(styles)(Menu);

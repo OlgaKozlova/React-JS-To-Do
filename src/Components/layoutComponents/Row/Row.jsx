@@ -11,8 +11,11 @@ const styles = {
 const Row = props => (<div className={props.classes.row}>{props.children}</div>);
 
 Row.propTypes = {
-    children: PropTypes.oneOfType(PropTypes.node, PropTypes.arrayOf(PropTypes.node)).isRequired,
-    classes: PropTypes.arrayOf(PropTypes.string),
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]).isRequired,
+    classes: PropTypes.objectOf(PropTypes.string),
 };
 
 export default injectSheet(styles)(Row);

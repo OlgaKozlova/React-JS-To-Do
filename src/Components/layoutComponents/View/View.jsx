@@ -23,8 +23,11 @@ const styles = {
 const View = props => <div className={props.classes.container}>{props.children}</div>;
 
 View.propTypes = {
-    children: PropTypes.oneOfType(PropTypes.node, PropTypes.arrayOf(PropTypes.node)).isRequired,
-    classes: PropTypes.arrayOf(PropTypes.string),
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]).isRequired,
+    classes: PropTypes.objectOf(PropTypes.string),
 };
 
 export default injectSheet(styles)(View);

@@ -33,7 +33,7 @@ const Calendar = props => (
             }
         </Row>
         {
-            props.weeks.map(week => (<Row>
+            props.weeks.map((week, index) => (<Row key={index}>
                 {
                     week.map(dayOfWeek => (<Column key={dayOfWeek.id}>
                         <div>{ dayOfWeek.label }</div>
@@ -46,9 +46,9 @@ const Calendar = props => (
 
 Calendar.propTypes = {
     title: PropTypes.string.isRequired,
-    dayOfWeeks: PropTypes.arrayOf(PropTypes.string),
+    dayOfWeeks: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
     weeks: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired,
-    classes: PropTypes.arrayOf(PropTypes.string),
+    classes: PropTypes.objectOf(PropTypes.string),
 };
 
 export default injectSheet(styles)(Calendar);

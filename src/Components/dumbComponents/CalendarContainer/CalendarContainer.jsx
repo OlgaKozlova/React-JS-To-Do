@@ -13,8 +13,11 @@ const CalendarContainer = props => (<div className={props.classes.calendarContai
 </div>);
 
 CalendarContainer.propTypes = {
-    children: PropTypes.oneOfType(PropTypes.node, PropTypes.arrayOf(PropTypes.node)).isRequired,
-    classes: PropTypes.arrayOf(PropTypes.string),
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]).isRequired,
+    classes: PropTypes.objectOf(PropTypes.string),
 };
 
 export default injectSheet(styles)(CalendarContainer);

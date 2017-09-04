@@ -1,4 +1,9 @@
+import CalendarViewTexts from './CalendarViewTexts.json';
+
 export default () => ({
+    title: CalendarViewTexts.TITLE,
+    description: CalendarViewTexts.DESCRIPTION,
+    calendarTitle: 'Calendar',
     weeks: [
         [
             { id: 1, label: 1, isHoliday: false },
