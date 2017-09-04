@@ -12,6 +12,9 @@ import Header from '../../dumbComponents/Header/Header.jsx';
 import Menu from '../../dumbComponents/Menu/Menu.jsx';
 import CalendarContainer from '../../dumbComponents/CalendarContainer/CalendarContainer.jsx';
 import Calendar from '../../dumbComponents/Calendar/Calendar.jsx';
+import ToDoList from '../../dumbComponents/ToDoList/ToDoList.jsx';
+import Button from '../../dumbComponents/Button/Button.jsx';
+import Input from '../../dumbComponents/Input/Input.jsx';
 
 export default connect(CalendarViewSelector, CalendarViewActions)(props => (<View>
     <Row>
@@ -41,6 +44,37 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
                     dayOfWeeks={props.dayOfWeeks}
                 />
             </CalendarContainer>
+            <ToDoList items={props.toDoItems} />
+            {
+                props.isAddEditFormShown
+                    ? <div>
+                        <Input
+                            value={props.toDoItemDate}
+                            onChange={e => props.changeToDoItemDate(e.target.value)}
+                        />
+                        <Input
+                            value={props.toDoItemTitle}
+                            onChange={e => props.changeToDoItemTitle(e.target.value)}
+                        />
+                        <Input
+                            value={props.toDoItemText}
+                            onChange={e => props.changeToDoItemText(e.target.value)}
+                        />
+                        <Button
+                            label={props.saveToDoItemButtonLabel}
+                            onClick={props.saveToDoItem}
+                        />
+                        <Button
+                            label={props.cancelToDoItemButtonLabel}
+                            onClick={props.cancelSaveToDoItem}
+                        />
+                    </div>
+                    : null
+            }
+            <Button
+                label={props.addToDoButtonLabel}
+                onClick={() => props.openAddEditToDoItemForm(null)}
+            />
         </Column>
     </Row>
 </View>));

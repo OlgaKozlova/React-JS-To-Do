@@ -9,19 +9,23 @@ const styles = {
     calendar: {
         backgroundColor: 'white',
     },
+    day: {
+        padding: '20px 0',
+        textAlign: 'center',
+    },
 };
 
 const Calendar = props => (
     <div className={props.classes.calendar}>
         <Row>
             <Column>
-                <div role="button" tabIndex="0" onClick={props.onNextMonthClick}>Previous</div>
+                <div role="button" tabIndex="0" onClick={props.onPreviousMonthClick}>Previous</div>
             </Column>
             <Column>
                 <div >{props.title}</div>
             </Column>
             <Column>
-                <div role="button" tabIndex="0" onClick={props.onPreviousMonthClick}>Next</div>
+                <div role="button" tabIndex="0" onClick={props.onNextMonthClick}>Next</div>
             </Column>
         </Row>
         <Row>
@@ -36,6 +40,7 @@ const Calendar = props => (
                 {
                     week.map(dayOfWeek => (<Column key={dayOfWeek.id}>
                         <div
+                            className={props.classes.day}
                             role="button"
                             tabIndex="0"
                             onClick={() => props.onDayClick(dayOfWeek.value)}

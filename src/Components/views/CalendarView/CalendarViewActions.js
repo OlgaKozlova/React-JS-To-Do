@@ -9,6 +9,14 @@ import {
     CANCEL_ADDING_TO_DO_ITEM,
 } from './CalendarViewConstants.js';
 
+import {
+    getToDoItemDate,
+    getToDoItemText,
+    getToDoItemTitle,
+} from './CalendarViewSelector.js';
+
+import { addToDo, deleteToDo } from '../../../features/ToDo/ToDo.js';
+
 export default {
     incrementMonth: () => ({
         type: INCREMENT_MONTH,
@@ -24,9 +32,11 @@ export default {
             activeDay,
         },
     }),
-    openAddEditToDoItemForm: () => ({
+    openAddEditToDoItemForm: id => ({
         type: OPEN_ADD_EDIT_TO_DO_ITEM_FORM,
-        payload: {},
+        payload: {
+            id,
+        },
     }),
     changeToDoItemText: text => ({
         type: CHANGE_TO_DO_ITEM_TEXT,
@@ -46,14 +56,19 @@ export default {
             date,
         },
     }),
-    cancelToDoItemAction: () => ({
+    cancelSaveToDoItem: () => ({
         type: CANCEL_ADDING_TO_DO_ITEM,
         payload: {},
     }),
     saveToDoItem: () => (dispatch, getState) => {
-        console.log(getState);
+        const state = getState();
+        const date = getToDoItemDate(state);
+        const text = getToDoItemText(state);
+        const title = getToDoItemTitle(state);
+
+        dispatch(addToDo(date, text, title));
     },
-    deleteToDoItem: id => (dispatch, getState) => {
-        console.log(id, getState);
+    deleteToDoItem: id => (dispatch) => {
+        dispatch(deleteToDo(id));
     },
 };

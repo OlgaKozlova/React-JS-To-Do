@@ -1,2 +1,2 @@
-export { CalendarViewReducer } from './Components/views/CalendarView/CalendarViewReducer.js'; // eslint-disable-line import/prefer-default-export
-// add here other reducers exports
+export { CalendarViewReducer } from './Components/views/CalendarView/CalendarViewReducer.js';
+export { ToDoFeatureReducer } from './features/ToDo/ToDoFeatureReducer.js';

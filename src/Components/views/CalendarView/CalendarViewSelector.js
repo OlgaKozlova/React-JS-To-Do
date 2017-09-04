@@ -4,11 +4,13 @@ import moment from 'moment';
 import { reducerName } from './CalendarViewConstants.js';
 import CalendarViewTexts from './CalendarViewTexts.json';
 
+import {getAllToDoItems} from '../../../features/ToDo/ToDoFeatureSelector.js';
+
 const getActiveDate = state => state[reducerName].get('activeDate');
 const getIsAddEditFormShown = state => state[reducerName].get('isAddEditFormShown');
-const getToDoItemTitle = state => state[reducerName].get('toDoItemTitle');
-const getToDoItemText = state => state[reducerName].get('toDoItemText');
-const getToDoItemDate = state => state[reducerName].get('toDoItemDate');
+export const getToDoItemTitle = state => state[reducerName].get('toDoItemTitle');
+export const getToDoItemText = state => state[reducerName].get('toDoItemText');
+export const getToDoItemDate = state => state[reducerName].get('toDoItemDate');
 
 function getWeeksRangeInMonth(momentObj) {
     const clonedMoment = moment(momentObj);
@@ -41,8 +43,8 @@ function getDay(weekInMonth, dayInWeek, activeDay) {
 }
 
 export default createSelector(
-    [getActiveDate, getIsAddEditFormShown, getToDoItemDate, getToDoItemText, getToDoItemTitle],
-    (activeDate, isAddEditFormShown, toDoItemDate, toDoItemText, toDoItemTitle) => {
+    [getActiveDate, getIsAddEditFormShown, getToDoItemDate, getToDoItemText, getToDoItemTitle, getAllToDoItems],
+    (activeDate, isAddEditFormShown, toDoItemDate, toDoItemText, toDoItemTitle, allToDoItems) => {
         // console.log(activeDate, isAddEditFormShown);
         return {
             title: CalendarViewTexts.TITLE,
@@ -51,13 +53,15 @@ export default createSelector(
             toDoItemText,
             toDoItemDate,
             isAddEditFormShown,
-            calendarTitle: 'Calendar',
+            addToDoButtonLabel: 'New To Do',
+            saveToDoItemButtonLabel: 'Save',
+            cancelToDoItemButtonLabel: 'Cancel',
+            calendarTitle: activeDate.format('MMMM YYYY'),
             weeks: getWeeksRangeInMonth(activeDate)
                 .map(weekNum => new Array(7).fill(1).map((item, dayInWeek) =>
                     getDay(weekNum, dayInWeek, activeDate))),
             dayOfWeeks: moment.weekdaysShort().map(day => ({ id: day, label: day })),
             menuItems: [{ text: 'Calendar', id: 'CALENDAR' }, { text: 'News', id: 'NEWS' }],
-            todos: [],
-            news: [],
+            toDoItems: allToDoItems.toArray(),
         };
     });

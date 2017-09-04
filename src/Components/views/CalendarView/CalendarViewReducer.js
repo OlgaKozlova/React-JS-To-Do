@@ -34,7 +34,9 @@ export const CalendarViewReducer = (state = initialState, action) => {
         return state.set('activeDate', payload.activeDay);
     }
     case OPEN_ADD_EDIT_TO_DO_ITEM_FORM: {
-        return state.set('isAddEditFormShown', true);
+        return state
+            .set('isAddEditFormShown', true)
+            .set('toDoItemId', payload.id);
     }
     case CHANGE_TO_DO_ITEM_TEXT: {
         return state.set('toDoItemText', payload.text);
