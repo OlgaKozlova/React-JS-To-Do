@@ -15,7 +15,7 @@ import {
     getToDoItemTitle,
 } from './CalendarViewSelector.js';
 
-import { addToDo, deleteToDo } from '../../../features/ToDo/ToDo.js';
+import { addToDo, deleteToDo } from '../../../Features/ToDo/ToDo.js';
 
 export default {
     incrementMonth: () => ({

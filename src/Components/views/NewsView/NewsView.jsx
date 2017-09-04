@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CalendarViewActions from './CalendarViewActions.js';
-import CalendarViewSelector from './CalendarViewSelector.js';
+import CalendarViewActions from './NewsViewActions.js';
+import CalendarViewSelector from './NewsViewSelector.js';
 
 import Row from '../../layoutComponents/Row/Row.jsx';
 import Column from '../../layoutComponents/Column/Column.jsx';

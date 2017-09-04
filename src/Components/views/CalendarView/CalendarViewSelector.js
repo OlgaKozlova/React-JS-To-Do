@@ -4,7 +4,7 @@ import moment from 'moment';
 import { reducerName } from './CalendarViewConstants.js';
 import CalendarViewTexts from './CalendarViewTexts.json';
 
-import {getAllToDoItems} from '../../../features/ToDo/ToDoFeatureSelector.js';
+import {getAllToDoItems} from '../../../Features/ToDo/ToDoFeatureSelector.js';
 
 const getActiveDate = state => state[reducerName].get('activeDate');
 const getIsAddEditFormShown = state => state[reducerName].get('isAddEditFormShown');

@@ -18,12 +18,14 @@ const ToDoList = props => (<div className={props.classes.toDoList}>
             text={item.text}
             title={item.title}
             isDone={item.isDone}
+            onDelete={props.onDelete}
         />))
     }
 </div>);
 
 ToDoList.propTypes = {
     items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onDelete: PropTypes.func.isRequired,
     classes: PropTypes.objectOf(PropTypes.string),
 };
 

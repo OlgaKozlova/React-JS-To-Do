@@ -13,11 +13,25 @@ const styles = {
 
 const ToDoListItem = props => (<div className={props.classes.toDoListItem}>
     <Row>
-        <Column> <div>{props.date}</div></Column>
-        <Column> <div>{props.title}</div></Column>
-        <Column> <div>{props.text}</div></Column>
-        <Column> <div>{props.isDone}</div></Column>
-        <Column> <div>Delete</div></Column>
+        <Column>
+            <div>{props.date}</div>
+        </Column>
+        <Column>
+            <div>{props.title}</div>
+        </Column>
+        <Column>
+            <div>{props.text}</div>
+        </Column>
+        <Column>
+            <div>{props.isDone}</div>
+        </Column>
+        <Column>
+            <div
+                onClick={() => props.onDelete(props.id)}
+            >
+                {props.deleteButtonLabel}
+            </div>
+        </Column>
     </Row>
 </div>);
 
@@ -26,6 +40,7 @@ ToDoListItem.propTypes = {
     text: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     isDone: PropTypes.bool.isRequired,
+    onDelete: PropTypes.func.isRequired,
     classes: PropTypes.objectOf(PropTypes.string),
 };
 
