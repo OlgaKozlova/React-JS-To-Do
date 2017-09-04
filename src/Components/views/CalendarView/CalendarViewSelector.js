@@ -1,57 +1,63 @@
+import { createSelector } from 'reselect';
+import moment from 'moment';
+
+import { reducerName } from './CalendarViewConstants.js';
 import CalendarViewTexts from './CalendarViewTexts.json';
 
-export default () => ({
-    title: CalendarViewTexts.TITLE,
-    description: CalendarViewTexts.DESCRIPTION,
-    calendarTitle: 'Calendar',
-    weeks: [
-        [
-            { id: 1, label: 1, isHoliday: false },
-            { id: 2, label: 3, isHoliday: false },
-            { id: 3, label: 3, isHoliday: false },
-            { id: 4, label: 4, isHoliday: false },
-            { id: 5, label: 5, isHoliday: false },
-            { id: 6, label: 6, isHoliday: true },
-            { id: 7, label: 7, isHoliday: true },
-        ],
-        [
-            { id: 8, label: 1, isHoliday: false },
-            { id: 9, label: 1, isHoliday: false },
-            { id: 10, label: 1, isHoliday: false },
-            { id: 11, label: 1, isHoliday: false },
-            { id: 12, label: 1, isHoliday: false },
-            { id: 13, label: 1, isHoliday: true },
-            { id: 14, label: 1, isHoliday: true },
-        ],
-        [
-            { id: 15, label: 1, isHoliday: false },
-            { id: 16, label: 1, isHoliday: false },
-            { id: 17, label: 1, isHoliday: false },
-            { id: 18, label: 1, isHoliday: false },
-            { id: 19, label: 1, isHoliday: false },
-            { id: 20, label: 1, isHoliday: true },
-            { id: 21, label: 1, isHoliday: true },
-        ],
-        [
-            { id: 22, label: 1, isHoliday: false },
-            { id: 23, label: 1, isHoliday: false },
-            { id: 24, label: 1, isHoliday: false },
-            { id: 25, label: 1, isHoliday: false },
-            { id: 26, label: 1, isHoliday: false },
-            { id: 27, label: 1, isHoliday: true },
-            { id: 28, label: 1, isHoliday: true },
-        ],
-    ],
-    dayOfWeeks: [
-        { id: 'MON', label: 'Mon' },
-        { id: 'TUE', label: 'Tue' },
-        { id: 'WEN', label: 'Wen' },
-        { id: 'THU', label: 'Thu' },
-        { id: 'FRI', label: 'Fri' },
-        { id: 'SAT', label: 'Sat' },
-        { id: 'SUN', label: 'Sun' },
-    ],
-    menuItems: [{ text: 'Calendar', id: 'CALENDAR' }, { text: 'News', id: 'NEWS' }],
-    todos: [],
-    news: [],
-});
+const getActiveDate = state => state[reducerName].get('activeDate');
+const getIsAddEditFormShown = state => state[reducerName].get('isAddEditFormShown');
+const getToDoItemTitle = state => state[reducerName].get('toDoItemTitle');
+const getToDoItemText = state => state[reducerName].get('toDoItemText');
+const getToDoItemDate = state => state[reducerName].get('toDoItemDate');
+
+function getWeeksRangeInMonth(momentObj) {
+    const clonedMoment = moment(momentObj);
+    const first = clonedMoment.startOf('month').week();
+    let last = clonedMoment.endOf('month').week();
+    const result = [];
+
+    // In case last week is in next year
+    if (first > last) {
+        last = first + last;
+    }
+
+    for (let i = first; i <= last; i += 1) {
+        result.push(i);
+    }
+    return result;
+}
+
+function getDay(weekInMonth, dayInWeek, activeDay) {
+    const clonedMoment = moment(activeDay);
+    const day = clonedMoment.week(weekInMonth).day(dayInWeek);
+
+    return {
+        id: day.date(),
+        label: day.date(),
+        value: day,
+        isHoliday: [5, 6].includes(day.day()),
+        isInActiveMonth: activeDay.month() === day.month(),
+    };
+}
+
+export default createSelector(
+    [getActiveDate, getIsAddEditFormShown, getToDoItemDate, getToDoItemText, getToDoItemTitle],
+    (activeDate, isAddEditFormShown, toDoItemDate, toDoItemText, toDoItemTitle) => {
+        // console.log(activeDate, isAddEditFormShown);
+        return {
+            title: CalendarViewTexts.TITLE,
+            description: CalendarViewTexts.DESCRIPTION,
+            toDoItemTitle,
+            toDoItemText,
+            toDoItemDate,
+            isAddEditFormShown,
+            calendarTitle: 'Calendar',
+            weeks: getWeeksRangeInMonth(activeDate)
+                .map(weekNum => new Array(7).fill(1).map((item, dayInWeek) =>
+                    getDay(weekNum, dayInWeek, activeDate))),
+            dayOfWeeks: moment.weekdaysShort().map(day => ({ id: day, label: day })),
+            menuItems: [{ text: 'Calendar', id: 'CALENDAR' }, { text: 'News', id: 'NEWS' }],
+            todos: [],
+            news: [],
+        };
+    });

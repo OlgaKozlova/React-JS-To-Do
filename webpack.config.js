@@ -30,6 +30,7 @@ module.exports = {
         ]),
     ],
     devServer: {
+        historyApiFallback: true,
         contentBase: path.join(__dirname, 'src'),
         compress: true,
         host: '127.0.0.1',

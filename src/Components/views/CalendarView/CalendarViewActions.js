@@ -6,9 +6,7 @@ import {
     CHANGE_TO_DO_ITEM_TEXT,
     CHANGE_TO_DO_ITEM_TITLE,
     CHANGE_TO_DO_ITEM_DATE,
-    SAVE_TO_DO_ITEM,
     CANCEL_ADDING_TO_DO_ITEM,
-    DELETE_TO_DO_ITEM,
 } from './CalendarViewConstants.js';
 
 export default {
@@ -52,14 +50,10 @@ export default {
         type: CANCEL_ADDING_TO_DO_ITEM,
         payload: {},
     }),
-    saveToDoItem: () => ({
-        type: SAVE_TO_DO_ITEM,
-        payload: {},
-    }),
-    deleteToDoItem: id => ({
-        type: DELETE_TO_DO_ITEM,
-        payload: {
-            id,
-        },
-    }),
+    saveToDoItem: () => (dispatch, getState) => {
+        console.log(getState);
+    },
+    deleteToDoItem: id => (dispatch, getState) => {
+        console.log(id, getState);
+    },
 };

@@ -33,6 +33,9 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
         <Column>
             <CalendarContainer>
                 <Calendar
+                    onNextMonthClick={props.incrementMonth}
+                    onPreviousMonthClick={props.decrementMonth}
+                    onDayClick={day => props.setActiveDay(day)}
                     title={props.calendarTitle}
                     weeks={props.weeks}
                     dayOfWeeks={props.dayOfWeeks}
