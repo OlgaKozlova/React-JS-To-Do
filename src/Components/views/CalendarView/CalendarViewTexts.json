@@ -1,12 +1,12 @@
 {
   "TITLE": "Calendar",
   "DESCRIPTION": "Simple Calendar with displaying news and adding To Do functionality.",
-  "DATE_TEMPLATE": "YYYY-MM-DD",
-  "YEAR_AND_MONTH_TEMPLATE": "MMM, YYYY",
-  "TODOS": "Todo items for ${date}",
-  "NEWS": "Todo items for ${date}",
-  "NO_NEWS": "No news for ${date}",
-  "NO_TODOS": "No Todos for ${date}",
   "SAVE_BUTTON_LABEL": "Save",
-  "CANCEL_BUTTON_LABEL": "Cancel"
+  "CANCEL_BUTTON_LABEL": "Cancel",
+  "DATE_INPUT_LABEL": "Enter date:",
+  "DATE_INPUT_PROMPT": "Please, enter valid date in format YYYY-MM-DD",
+  "TITLE_INPUT_LABEL": "Enter title:",
+  "TITLE_INPUT_PROMPT": "Please, enter title",
+  "TEXT_INPUT_LABEL": "Enter text:",
+  "TEXT_INPUT_PROMPT": "Please, enter text"
 }

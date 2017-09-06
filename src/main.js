@@ -17,13 +17,13 @@ const logger = createLogger({
     stateTransformer: (state) => {
         const newState = {};
 
-        for (const i of Object.keys(state)) { // eslint-disable-line no-restricted-syntax
-            if (Immutable.Iterable.isIterable(state[i])) {
-                newState[i] = state[i].toJS();
+        Object.keys(state).forEach((key) => {
+            if (Immutable.Iterable.isIterable(state[key])) {
+                newState[key] = state[key].toJS();
             } else {
-                newState[i] = state[i];
+                newState[key] = state[key];
             }
-        }
+        });
 
         return newState;
     },

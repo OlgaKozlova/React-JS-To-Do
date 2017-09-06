@@ -44,31 +44,57 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
                     dayOfWeeks={props.dayOfWeeks}
                 />
             </CalendarContainer>
-            <ToDoList items={props.toDoItems} onDelete={props.deleteToDoItem}/>
+        </Column>
+        <Column>
+            <ToDoList
+                items={props.toDoItems}
+                onDelete={props.deleteToDoItem}
+            />
             {
                 props.isAddEditFormShown
-                    ? <div>
-                        <Input
-                            value={props.toDoItemDate}
-                            onChange={e => props.changeToDoItemDate(e.target.value)}
-                        />
-                        <Input
-                            value={props.toDoItemTitle}
-                            onChange={e => props.changeToDoItemTitle(e.target.value)}
-                        />
-                        <Input
-                            value={props.toDoItemText}
-                            onChange={e => props.changeToDoItemText(e.target.value)}
-                        />
-                        <Button
-                            label={props.saveToDoItemButtonLabel}
-                            onClick={props.saveToDoItem}
-                        />
-                        <Button
-                            label={props.cancelToDoItemButtonLabel}
-                            onClick={props.cancelSaveToDoItem}
-                        />
-                    </div>
+                    ? <Row>
+                        <Row>
+                            <Input
+                                type="date"
+                                value={props.dateInputOptions.value}
+                                label={props.dateInputOptions.label}
+                                prompt={props.dateInputOptions.prompt}
+                                onChange={e => props.changeToDoItemDate(e.target.value)}
+                            />
+                        </Row>
+                        <Row>
+                            <Input
+                                type="text"
+                                label={props.titleInputLabel}
+                                prompt={props.titleInputPrompt}
+                                value={props.toDoItemTitle}
+                                onChange={e => props.changeToDoItemTitle(e.target.value)}
+                            />
+                        </Row>
+                        <Row>
+                            <Input
+                                type="text"
+                                label={props.textInputLabel}
+                                prompt={props.textInputPrompt}
+                                value={props.toDoItemText}
+                                onChange={e => props.changeToDoItemText(e.target.value)}
+                            />
+                        </Row>
+                        <Row>
+                            <Column>
+                                <Button
+                                    label={props.saveToDoItemButtonLabel}
+                                    onClick={props.saveToDoItem}
+                                />
+                            </Column>
+                            <Column>
+                                <Button
+                                    label={props.cancelToDoItemButtonLabel}
+                                    onClick={props.cancelSaveToDoItem}
+                                />
+                            </Column>
+                        </Row>
+                    </Row>
                     : null
             }
             <Button
