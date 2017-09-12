@@ -25,6 +25,7 @@ export default connect(NewsViewSelector, NewsViewActions)(props => (<View>
         <Column>
             <Menu
                 menuItems={props.menuItems}
+                onClick={props.handleMenuItemClick}
             />
         </Column>
     </Row>

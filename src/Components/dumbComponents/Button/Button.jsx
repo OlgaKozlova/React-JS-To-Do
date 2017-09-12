@@ -14,12 +14,11 @@ const styles = {
         fontWeight: 'bolder',
         display: 'inline-block',
         padding: '10px 20px',
-        backgroundColor: '#8D70B0',
-        border: '4px solid #373C4F',
     },
 };
 
 const Button = props => (<button
+    disabled={props.isDisabled}
     className={props.classes.button}
     onClick={props.onClick}
 >
@@ -29,7 +28,12 @@ const Button = props => (<button
 Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     label: PropTypes.string.isRequired,
+    isDisabled: PropTypes.bool,
     classes: PropTypes.objectOf(PropTypes.string),
+};
+
+Button.defaultProps = {
+    isDisabled: false,
 };
 
 export default injectSheet(styles)(Button);

@@ -7,6 +7,7 @@ const styles = {
         textAlign: 'center',
     },
     description: {
+        minHeight: '100px',
         textAlign: 'center',
         fontSize: '1.5em',
     },

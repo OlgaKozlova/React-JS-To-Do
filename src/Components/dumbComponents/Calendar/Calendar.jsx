@@ -19,19 +19,37 @@ const Calendar = props => (
     <div className={props.classes.calendar}>
         <Row>
             <Column>
-                <div role="button" tabIndex="0" onClick={props.onPreviousMonthClick}>Previous</div>
+                <div
+                    className={props.classes.day}
+                    role="button"
+                    tabIndex="0"
+                    onClick={props.onPreviousMonthClick}
+                >
+                    { props.previousButtonLabel }
+                </div>
             </Column>
             <Column>
-                <div >{props.title}</div>
+                <div
+                    className={props.classes.day}
+                >
+                    { props.title }
+                </div>
             </Column>
             <Column>
-                <div role="button" tabIndex="0" onClick={props.onNextMonthClick}>Next</div>
+                <div
+                    className={props.classes.day}
+                    role="button"
+                    tabIndex="0"
+                    onClick={props.onNextMonthClick}
+                >
+                    { props.nextButtonLabel }
+                </div>
             </Column>
         </Row>
         <Row>
             {
                 props.dayOfWeeks.map(dayOfWeek => (<Column key={dayOfWeek.id}>
-                    <div>{ dayOfWeek.label }</div>
+                    <div className={props.classes.day}>{ dayOfWeek.label }</div>
                 </Column>))
             }
         </Row>
@@ -54,6 +72,8 @@ const Calendar = props => (
 
 Calendar.propTypes = {
     title: PropTypes.string.isRequired,
+    previousButtonLabel: PropTypes.string.isRequired,
+    nextButtonLabel: PropTypes.string.isRequired,
     dayOfWeeks: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
     weeks: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired,
     classes: PropTypes.objectOf(PropTypes.string),

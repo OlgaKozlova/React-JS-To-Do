@@ -10,6 +10,8 @@ import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import * as reducers from './reducers';
 import CalendarView from './Components/views/CalendarView/CalendarView.jsx';
+import NewsView from './Components/views/NewsView/NewsView.jsx';
+import { initToDoFeature } from './Features/ToDo/ToDo.js';
 
 const history = createHistory();
 const rMiddleware = routerMiddleware(history);
@@ -38,6 +40,8 @@ const store = createStore(
     applyMiddleware(rMiddleware, thunk, logger),
 );
 
+store.dispatch(initToDoFeature());
+
 ReactDOM.render(
     // eslint-disable-next-line react/jsx-filename-extension
     <Provider store={store}>
@@ -45,7 +49,7 @@ ReactDOM.render(
             <div>
                 <Switch>
                     <Route exact path="/calendar" component={CalendarView} />
-                    <Route exact path="/news" component={CalendarView} />
+                    <Route exact path="/news" component={NewsView} />
                     <Redirect from="/" exact to="/calendar" />
                 </Switch>
             </div>

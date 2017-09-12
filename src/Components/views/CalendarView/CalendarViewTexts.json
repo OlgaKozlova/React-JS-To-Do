@@ -8,5 +8,13 @@
   "TITLE_INPUT_LABEL": "Enter title:",
   "TITLE_INPUT_PROMPT": "Please, enter title",
   "TEXT_INPUT_LABEL": "Enter text:",
-  "TEXT_INPUT_PROMPT": "Please, enter text"
+  "TEXT_INPUT_PROMPT": "Please, enter text",
+  "ADD_TO_DO_BUTTON_LABEL": "New To Do",
+  "SAVE_TO_DO_ITEM_BUTTON_LABEL": "Save",
+  "CANCEL_TO_DO_ITEM_BUTTON_LABEL": "Cancel",
+  "CALENDAR_TITLE_FORMAT": "MMMM YYYY",
+  "DELETE_TO_DO_ITEM_BUTTON_LABEL": "Delete",
+  "EDIT_TO_DO_ITEM_BUTTON_LABEL": "Edit",
+  "PREVIOUS_BUTTON_LABEL": "Previous",
+  "NEXT_BUTTON_LABEL": "Next"
 }

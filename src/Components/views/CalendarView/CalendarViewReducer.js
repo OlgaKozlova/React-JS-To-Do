@@ -11,13 +11,13 @@ import {
     CANCEL_ADDING_TO_DO_ITEM,
 } from './CalendarViewConstants.js';
 
-export const initialState = Immutable.Map({
+export const initialState = Immutable.fromJS({
     activeDate: moment(),
     isAddEditFormShown: false,
-    toDoItemId: null,
+    toDoItemId: '',
     toDoItemTitle: '',
     toDoItemText: '',
-    toDoItemDate: null,
+    toDoItemDate: '',
 });
 
 export const CalendarViewReducer = (state = initialState, action) => {
@@ -36,7 +36,10 @@ export const CalendarViewReducer = (state = initialState, action) => {
     case OPEN_ADD_EDIT_TO_DO_ITEM_FORM: {
         return state
             .set('isAddEditFormShown', true)
-            .set('toDoItemId', payload.id);
+            .set('toDoItemId', payload.id || '')
+            .set('toDoItemText', payload.text || '')
+            .set('toDoItemTitle', payload.title || '')
+            .set('toDoItemDate', payload.date || payload.currentDate);
     }
     case CHANGE_TO_DO_ITEM_TEXT: {
         return state.set('toDoItemText', payload.text);

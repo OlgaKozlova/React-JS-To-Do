@@ -10,6 +10,7 @@ export default createSelector(
         return {
             title: NewsViewTexts.TITLE,
             description: NewsViewTexts.DESCRIPTION,
-            news,
+            news: news.toJS(),
+            menuItems: [{ text: 'Calendar', id: 'CALENDAR', url: '/calendar' }, { text: 'News', id: 'NEWS', url: '/news' }],
         };
     });

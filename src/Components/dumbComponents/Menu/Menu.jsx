@@ -10,23 +10,25 @@ const styles = {
     item: {
         width: '100px',
         textAlign: 'center',
-        color: 'white',
         fontWeight: 'bolder',
         display: 'inline-block',
         padding: '10px 20px',
-        backgroundColor: '#8D70B0',
-        border: '4px solid #373C4F',
+        border: '1px solid',
     },
 };
 
 const Menu = props => (<ul className={props.classes.menu}>
     { props.menuItems.map(menuItem => (
-        <li
-            className={props.classes.item}
+        <div
             key={menuItem.id}
+            role="button"
+            tabIndex={0}
+            className={props.classes.item}
+            onClick={() => props.onClick(menuItem.url)}
         >
             {menuItem.text}
-        </li>)) }
+        </div>
+    )) }
 </ul>);
 
 Menu.propTypes = {

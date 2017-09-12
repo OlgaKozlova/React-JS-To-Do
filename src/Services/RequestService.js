@@ -7,18 +7,18 @@ const makeRequest = (method, url) => new Promise(
         const xhr = new window.XMLHttpRequest();
         xhr.open(method, url);
         xhr.onload = () => {
-            if (this.status >= 200 && this.status < 300) {
-                resolve(xhr.response);
+            if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(JSON.parse(xhr.response));
             } else {
                 reject({
-                    status: this.status,
+                    status: xhr.status,
                     statusText: xhr.statusText,
                 });
             }
         };
         xhr.onerror = () => {
             reject({
-                status: this.status,
+                status: xhr.status,
                 statusText: xhr.statusText,
             });
         };

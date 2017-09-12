@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 import { reducerName } from './NewsFeatureConstants.js';
 
-const getSelectedNewsUrls = state => state[reducerName].selectedNewsUrls;
-const getActualNews = state => state[reducerName].actualNews;
+const getSelectedNewsUrls = state => state[reducerName].get('selectedNewsUrls');
+const getActualNews = state => state[reducerName].get('actualNews');
 
 export const getNews = createSelector(
     [getSelectedNewsUrls, getActualNews],

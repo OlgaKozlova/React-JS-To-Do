@@ -1,4 +1,6 @@
-export default class ToDo {
+export const ToDoType = 'TO_DO';
+
+export const ToDoModel = class {
     constructor(id, date, title, text) {
         this.id = id;
         this.isDone = false;
@@ -6,4 +8,4 @@ export default class ToDo {
         this.title = title;
         this.text = text;
     }
-}
+};

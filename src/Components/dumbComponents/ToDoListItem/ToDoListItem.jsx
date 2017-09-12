@@ -27,6 +27,17 @@ const ToDoListItem = props => (<div className={props.classes.toDoListItem}>
         </Column>
         <Column>
             <div
+                role="button"
+                tabIndex={0}
+                onClick={() => props.onEdit(props.id)}
+            >
+                {props.editButtonLabel}
+            </div>
+        </Column>
+        <Column>
+            <div
+                role="button"
+                tabIndex={0}
                 onClick={() => props.onDelete(props.id)}
             >
                 {props.deleteButtonLabel}
@@ -36,11 +47,15 @@ const ToDoListItem = props => (<div className={props.classes.toDoListItem}>
 </div>);
 
 ToDoListItem.propTypes = {
+    id: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    editButtonLabel: PropTypes.string.isRequired,
+    deleteButtonLabel: PropTypes.string.isRequired,
     isDone: PropTypes.bool.isRequired,
     onDelete: PropTypes.func.isRequired,
+    onEdit: PropTypes.func.isRequired,
     classes: PropTypes.objectOf(PropTypes.string),
 };
 

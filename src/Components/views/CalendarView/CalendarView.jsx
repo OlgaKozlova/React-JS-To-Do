@@ -29,6 +29,7 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
         <Column>
             <Menu
                 menuItems={props.menuItems}
+                onClick={props.handleMenuItemClick}
             />
         </Column>
     </Row>
@@ -36,6 +37,8 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
         <Column>
             <CalendarContainer>
                 <Calendar
+                    previousButtonLabel={props.previousButtonLabel}
+                    nextButtonLabel={props.nextButtonLabel}
                     onNextMonthClick={props.incrementMonth}
                     onPreviousMonthClick={props.decrementMonth}
                     onDayClick={day => props.setActiveDay(day)}
@@ -49,6 +52,9 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
             <ToDoList
                 items={props.toDoItems}
                 onDelete={props.deleteToDoItem}
+                onEdit={props.openAddEditToDoItemForm}
+                deleteButtonLabel={props.deleteToBoItemButtonLabel}
+                editButtonLabel={props.editToBoItemButtonLabel}
             />
             {
                 props.isAddEditFormShown
@@ -65,24 +71,25 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
                         <Row>
                             <Input
                                 type="text"
-                                label={props.titleInputLabel}
-                                prompt={props.titleInputPrompt}
-                                value={props.toDoItemTitle}
+                                label={props.titleInputOptions.label}
+                                prompt={props.titleInputOptions.prompt}
+                                value={props.titleInputOptions.value}
                                 onChange={e => props.changeToDoItemTitle(e.target.value)}
                             />
                         </Row>
                         <Row>
                             <Input
                                 type="text"
-                                label={props.textInputLabel}
-                                prompt={props.textInputPrompt}
-                                value={props.toDoItemText}
+                                label={props.textInputOptions.label}
+                                prompt={props.textInputOptions.prompt}
+                                value={props.textInputOptions.value}
                                 onChange={e => props.changeToDoItemText(e.target.value)}
                             />
                         </Row>
                         <Row>
                             <Column>
                                 <Button
+                                    isDisabled={props.isSaveToBoItemButtonDisabled}
                                     label={props.saveToDoItemButtonLabel}
                                     onClick={props.saveToDoItem}
                                 />
@@ -97,10 +104,14 @@ export default connect(CalendarViewSelector, CalendarViewActions)(props => (<Vie
                     </Row>
                     : null
             }
-            <Button
-                label={props.addToDoButtonLabel}
-                onClick={() => props.openAddEditToDoItemForm(null)}
-            />
+            {
+                !props.isAddEditFormShown
+                    ? <Button
+                        label={props.addToDoButtonLabel}
+                        onClick={() => props.openAddEditToDoItemForm(null)}
+                    />
+                    : null
+            }
         </Column>
     </Row>
 </View>));

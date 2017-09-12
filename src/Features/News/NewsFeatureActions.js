@@ -8,14 +8,14 @@ const saveNews = news => ({
     },
 });
 
-export const selectNewItem = url => ({
+export const selectNewsItem = url => ({
     type: ADD_URL_TO_SELECTED,
     payload: {
         url,
     },
 });
 
-export const deselectNewItem = url => ({
+export const deselectNewsItem = url => ({
     type: REMOVE_URL_FROM_SELECTED,
     payload: {
         url,
@@ -23,7 +23,8 @@ export const deselectNewItem = url => ({
 });
 
 export const fetchNews = () => async (dispatch) => {
-    const news = await getRequest(NEWS_URL);
+    const responce = await getRequest(NEWS_URL);
+    const news = responce.articles;
 
     dispatch(saveNews(news));
 };

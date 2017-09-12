@@ -20,6 +20,7 @@ const Input = props => (<Row>
         </Row>
         <Row>
             <input
+                value={props.value}
                 type={props.type}
                 className={props.classes.input}
                 onChange={props.onChange}
@@ -38,6 +39,7 @@ Input.propTypes = {
     label: PropTypes.string.isRequired,
     prompt: PropTypes.string.isRequired,
     type: PropTypes.oneOf('text', 'date'),
+    value: PropTypes.string.isRequired,
     classes: PropTypes.objectOf(PropTypes.string),
 };
 

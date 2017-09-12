@@ -6,7 +6,7 @@ export const initialState = Immutable.fromJS({
     selectedNewsUrls: [],
 });
 
-export const ToDoFeatureReducer = (state = initialState, action) => {
+export const NewsFeatureReducer = (state = initialState, action) => {
     const payload = action.payload;
 
     switch (action.type) {

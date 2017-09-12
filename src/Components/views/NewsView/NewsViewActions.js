@@ -1,4 +1,5 @@
-import { selectNewItem, deselectNewItem, getNews } from '../../../Features/News/News.js';
+import { push } from 'react-router-redux';
+import { selectNewsItem, deselectNewsItem, getNews, fetchNews } from '../../../Features/News/News.js';
 
 export default {
     toggleIsItemSelected: id => (dispatch, getState) => {
@@ -6,10 +7,16 @@ export default {
         const newsItem = allNews.find(item => item.id === id);
         if (newsItem) {
             if (newsItem.isSelected) {
-                dispatch(deselectNewItem(id));
+                dispatch(deselectNewsItem(id));
             } else {
-                dispatch(selectNewItem(id));
+                dispatch(selectNewsItem(id));
             }
         }
+    },
+    handleMenuItemClick: url => (dispatch) => {
+        if (url === '/news') {
+            dispatch(fetchNews());
+        }
+        dispatch(push(url));
     },
 };
