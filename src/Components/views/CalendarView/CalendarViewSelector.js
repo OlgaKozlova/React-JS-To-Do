@@ -6,7 +6,7 @@ import CalendarViewTexts from './CalendarViewTexts.json';
 
 import { getAllToDoItems } from '../../../Features/ToDo/ToDoFeatureSelector.js';
 
-const getActiveDate = state => state[reducerName].get('activeDate');
+export const getActiveDate = state => state[reducerName].get('activeDate');
 const getIsAddEditFormShown = state => state[reducerName].get('isAddEditFormShown');
 export const getToDoItemTitle = state => state[reducerName].get('toDoItemTitle');
 export const getToDoItemText = state => state[reducerName].get('toDoItemText');
@@ -59,6 +59,13 @@ function isFormValid(toDoItemDate, toDoItemTitle, toDoItemText) {
     return moment(toDoItemDate).isValid() && toDoItemText !== '' && toDoItemTitle !== '';
 }
 
+export const getToDoItemsForActiveDay = createSelector(
+    [ getAllToDoItems, getActiveDate ],
+    (allToDoItems, activeDate) => {
+        return allToDoItems.filter(item => item.date === activeDate.format('YYYY-MM_DD'));
+    }
+)
+
 export default createSelector(
     [
         getActiveDate,
@@ -66,7 +73,7 @@ export default createSelector(
         getToDoItemDate,
         getToDoItemText,
         getToDoItemTitle,
-        getAllToDoItems,
+        getToDoItemsForActiveDay,
     ],
     (
         activeDate,
@@ -74,7 +81,7 @@ export default createSelector(
         toDoItemDate,
         toDoItemText,
         toDoItemTitle,
-        allToDoItems,
+        toDoItemForActiveDate,
     ) => ({
         // pageOptions
         title: CalendarViewTexts.TITLE,
@@ -111,7 +118,7 @@ export default createSelector(
         isSaveToBoItemButtonDisabled: !isFormValid(toDoItemDate, toDoItemTitle, toDoItemText),
         cancelToDoItemButtonLabel: CalendarViewTexts.CANCEL_TO_DO_ITEM_BUTTON_LABEL,
         // To Do Items List Options
-        toDoItems: allToDoItems.toList().toJS(),
+        toDoItems: toDoItemForActiveDate.toList().toJS(),
         previousButtonLabel: CalendarViewTexts.PREVIOUS_BUTTON_LABEL,
         nextButtonLabel: CalendarViewTexts.NEXT_BUTTON_LABEL,
     }));

@@ -1,5 +1,5 @@
 import { push } from 'react-router-redux';
-import moment from 'moment';
+
 import {
     INCREMENT_MONTH,
     DECREMENT_MONTH,
@@ -37,14 +37,13 @@ const setActiveDay = activeDay => ({
     },
 });
 
-const openAddEditToDoItemForm = (id, date, text, title, currentDate) => ({
+const openAddEditToDoItemForm = (id, date, text, title) => ({
     type: OPEN_ADD_EDIT_TO_DO_ITEM_FORM,
     payload: {
         id,
         date,
         text,
         title,
-        currentDate,
     },
 });
 
@@ -93,12 +92,12 @@ export default {
         dispatch(cancelSaveToDoItem());
     },
     openAddEditToDoItemForm: id => (dispatch, getState) => {
-        const all = getAllToDoItems(getState());
+        const state = getState();
+        const all = getAllToDoItems(state);
         const item = all.find(i => i.id === id) || {};
         const { date, text, title } = item;
-        const currentDate = moment().format('YYYY-MM-DD');
 
-        dispatch(openAddEditToDoItemForm(id, date, text, title, currentDate));
+        dispatch(openAddEditToDoItemForm(id, date, text, title));
     },
     deleteToDoItem: id => (dispatch) => {
         dispatch(deleteToDo(id));

@@ -12,7 +12,7 @@ import {
 } from './CalendarViewConstants.js';
 
 export const initialState = Immutable.fromJS({
-    activeDate: moment(),
+    activeDate: moment(), // FIXME remove not pure function
     isAddEditFormShown: false,
     toDoItemId: '',
     toDoItemTitle: '',
@@ -39,7 +39,7 @@ export const CalendarViewReducer = (state = initialState, action) => {
             .set('toDoItemId', payload.id || '')
             .set('toDoItemText', payload.text || '')
             .set('toDoItemTitle', payload.title || '')
-            .set('toDoItemDate', payload.date || payload.currentDate);
+            .set('toDoItemDate', payload.date || state.get('activeDate').format('YYYY-MM-DD'));
     }
     case CHANGE_TO_DO_ITEM_TEXT: {
         return state.set('toDoItemText', payload.text);
