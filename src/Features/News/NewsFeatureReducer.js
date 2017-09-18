@@ -11,7 +11,8 @@ export const NewsFeatureReducer = (state = initialState, action) => {
 
     switch (action.type) {
     case SAVE_NEWS: {
-        return state.set('actualNews', Immutable.fromJS(payload.news));
+        const news = Immutable.List(payload.news.map(item => [item.url, item]));
+        return state.set('actualNews', Immutable.Map(news));
     }
     case ADD_URL_TO_SELECTED: {
         return state.update('actualNews', actualNews => actualNews.push(payload.url));

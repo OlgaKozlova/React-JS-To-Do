@@ -9,6 +9,9 @@ const styles = {
     newsListItem: {
         padding: '20px',
     },
+    image: {
+        maxWidth: '100%;',
+    },
 };
 
 const NewsListItem = props => (<div
@@ -24,18 +27,28 @@ const NewsListItem = props => (<div
         <Column>
             <div>{props.author}</div>
         </Column>
+    </Row>
+    <Row>
         <Column>
             <div>{props.title}</div>
         </Column>
+    </Row>
+    <Row>
         <Column>
             <div>{props.description}</div>
         </Column>
+    </Row>
+    <Row>
         <Column>
-            <div>{props.url}</div>
+            <a href={props.url}>Read all</a>
         </Column>
+    </Row>
+    <Row>
         <Column>
-            <div>{props.urlToImage}</div>
+            <img className={props.classes.image} src={props.urlToImage} alt={props.description} />
         </Column>
+    </Row>
+    <Row>
         <Column>
             <div>{props.isSelected}</div>
         </Column>

@@ -18,7 +18,7 @@ import {
     getToDoItemTitle,
 } from './CalendarViewSelector.js';
 
-import { upsertToDo, deleteToDo, getAllToDoItems } from '../../../Features/ToDo/ToDo.js';
+import { addToDo, editToDo, deleteToDo, getToDoById } from '../../../Features/ToDo/ToDo.js';
 
 const incrementMonth = () => ({
     type: INCREMENT_MONTH,
@@ -88,16 +88,24 @@ export default {
         const text = getToDoItemText(state);
         const title = getToDoItemTitle(state);
 
-        dispatch(upsertToDo(id, date, text, title));
+        if (id) {
+            dispatch(editToDo(id, date, text, title));
+        } else {
+            dispatch(addToDo(id, date, text, title));
+        }
+
         dispatch(cancelSaveToDoItem());
     },
     openAddEditToDoItemForm: id => (dispatch, getState) => {
         const state = getState();
-        const all = getAllToDoItems(state);
-        const item = all.find(i => i.id === id) || {};
-        const { date, text, title } = item;
+        const item = getToDoById(id, state);
 
-        dispatch(openAddEditToDoItemForm(id, date, text, title));
+        dispatch(openAddEditToDoItemForm(
+            id,
+            item.date,
+            item.text,
+            item.title,
+        ));
     },
     deleteToDoItem: id => (dispatch) => {
         dispatch(deleteToDo(id));

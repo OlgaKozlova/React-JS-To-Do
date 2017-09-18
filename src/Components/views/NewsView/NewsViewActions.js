@@ -14,9 +14,6 @@ export default {
         }
     },
     handleMenuItemClick: url => (dispatch) => {
-        if (url === '/news') {
-            dispatch(fetchNews());
-        }
         dispatch(push(url));
     },
 };

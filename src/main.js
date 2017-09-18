@@ -12,6 +12,7 @@ import * as reducers from './reducers';
 import CalendarView from './Components/views/CalendarView/CalendarView.jsx';
 import NewsView from './Components/views/NewsView/NewsView.jsx';
 import { initToDoFeature } from './Features/ToDo/ToDo.js';
+import { initNewsFeature } from './Features/News/News.js';
 
 const history = createHistory();
 const rMiddleware = routerMiddleware(history);
@@ -41,6 +42,7 @@ const store = createStore(
 );
 
 store.dispatch(initToDoFeature());
+store.dispatch(initNewsFeature());
 
 ReactDOM.render(
     // eslint-disable-next-line react/jsx-filename-extension

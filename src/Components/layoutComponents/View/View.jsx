@@ -6,7 +6,8 @@ const styles = {
     container: {
         display: 'flex',
         flexDirection: 'column',
-        height: '100%',
+        minHeight: '100%',
+        height: 'auto',
         fontFamily: 'sans-serif',
         backgroundColor: 'rgb(246, 245, 238)',
         boxShadow: '0 0 15px rgba(55, 60, 79, 0.5)',

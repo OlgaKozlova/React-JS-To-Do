@@ -14,7 +14,7 @@ const NewsList = props => (<div className={props.classes.newsList}>
     {
         props.items.map(item => (<NewsListItem
             key={item.id}
-            date={item.date}
+            date={item.publishedAt}
             author={item.author}
             title={item.title}
             description={item.description}

@@ -60,11 +60,9 @@ function isFormValid(toDoItemDate, toDoItemTitle, toDoItemText) {
 }
 
 export const getToDoItemsForActiveDay = createSelector(
-    [ getAllToDoItems, getActiveDate ],
-    (allToDoItems, activeDate) => {
-        return allToDoItems.filter(item => item.date === activeDate.format('YYYY-MM_DD'));
-    }
-)
+    [getAllToDoItems, getActiveDate],
+    (allToDoItems, activeDate) => allToDoItems.filter(item => item.date === activeDate.format('YYYY-MM-DD')),
+);
 
 export default createSelector(
     [

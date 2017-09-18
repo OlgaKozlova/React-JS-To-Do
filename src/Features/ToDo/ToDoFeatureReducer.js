@@ -8,10 +8,10 @@ export const ToDoFeatureReducer = (state = initialState, action) => {
 
     switch (action.type) {
     case ADD_TO_DO: {
-        return state.set(payload.toDo.id, Immutable.fromJS(payload.toDo));
+        return state.set(payload.toDo.id, payload.toDo);
     }
     case ADD_TO_DOS: {
-        const toDos = Immutable.fromJS(payload.toDos.map(item => [item.id, item]));
+        const toDos = Immutable.List(payload.toDos.map(item => [item.id, item]));
         return Immutable.Map(toDos);
     }
     case REMOVE_TO_DO: {
