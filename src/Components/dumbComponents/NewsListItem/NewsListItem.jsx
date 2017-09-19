@@ -22,35 +22,39 @@ const NewsListItem = props => (<div
 >
     <Row>
         <Column>
-            <div>{props.date}</div>
-        </Column>
-        <Column>
-            <div>{props.author}</div>
-        </Column>
-    </Row>
-    <Row>
-        <Column>
-            <div>{props.title}</div>
-        </Column>
-    </Row>
-    <Row>
-        <Column>
-            <div>{props.description}</div>
-        </Column>
-    </Row>
-    <Row>
-        <Column>
-            <a href={props.url}>Read all</a>
-        </Column>
-    </Row>
-    <Row>
-        <Column>
             <img className={props.classes.image} src={props.urlToImage} alt={props.description} />
         </Column>
-    </Row>
-    <Row>
-        <Column>
-            <div>{props.isSelected}</div>
+        <Column weight={2}>
+            <Row>
+                <Column>
+                    <div>{props.date}</div>
+                </Column>
+            </Row>
+            <Row>
+                <Column>
+                    <div>{props.author}</div>
+                </Column>
+            </Row>
+            <Row>
+                <Column>
+                    <div>{props.title}</div>
+                </Column>
+            </Row>
+            <Row>
+                <Column>
+                    <div>{props.description}</div>
+                </Column>
+            </Row>
+            <Row>
+                <Column>
+                    <a href={props.url}>Read all</a>
+                </Column>
+            </Row>
+            <Row>
+                <Column>
+                    <div>{props.isSelected}</div>
+                </Column>
+            </Row>
         </Column>
     </Row>
 </div>);

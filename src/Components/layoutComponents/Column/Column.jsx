@@ -6,7 +6,7 @@ const styles = {
     column: {
         display: 'flex',
         flexDirection: 'column',
-        flex: '1',
+        flex: props => props.weight,
     },
 };
 
@@ -18,6 +18,11 @@ Column.propTypes = {
         PropTypes.node,
     ]).isRequired,
     classes: PropTypes.objectOf(PropTypes.string),
+    weight: PropTypes.number,
+};
+
+Column.defaultProps = {
+    weight: 1,
 };
 
 export default injectSheet(styles)(Column);
